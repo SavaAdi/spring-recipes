@@ -15,26 +15,26 @@
 
 <body>
 <div class="jumbotron">
-    <h1><i style="color:green">Recipes</i></h1>
+    <h1><i style="color:green">Welcome</i></h1>
 </div>
-
-
 <div class="container">
-    <table class="table table-hover">
-        <thead>
+        <table class="table table-hover">
+            <thead>
             <tr>
                 <th>ID</th>
                 <th>Description</th>
+                <th>View Recipe</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             <tr th:each="recipe : ${recipes}">
                 <td th:text="${recipe.id}">id</td>
                 <td th:text="${recipe.description}">Hot cereals fruitcake</td>
+                <td><a th:href="@{'/recipe/show/' + ${recipe.id}}">View</a></td>
             </tr>
-        </tbody>
-    </table>
-
+            </tbody>
+        </table>
 </div>
+
 </body>
 </html>

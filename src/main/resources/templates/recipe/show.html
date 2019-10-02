@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--xml name space thymeleaf tag-->
+<html lang="en" xmlns:th="http:/www.thymeleaf.org">
+
+<head>
+    <title>Recipes Homepage</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+    .diff {
+         background-color: rgb(175, 202, 52);
+         color: rgba(8, 8, 8, 0.87);
+         padding: 5px;
+    }
+
+
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-info">
+            <h3 th:text="${recipe.description}">Recipe description</h3>
+        </div>
+    </div>
+
+    <div class="diff">
+        <h2 class="card-text" th:text="'Difficulty: ' + ${recipe.difficulty}" style="color:white>">
+            Difficulty</h2>
+    </div>
+
+    <div class="card-group">
+        <div class="card">
+            <div class="card-body text-center">
+                <ul style="list-style-type:none;">
+                    <b style="color:rgb(175, 202, 52)">
+                        <li th:text="'Preparation time: ' + ${recipe.prepTime} + ' mins'">Prep time</li>
+                    </b>
+                    <b style="color:rgb(175, 202, 52)">
+                        <li th:text="'Cooking time: ' + ${recipe.cookTime} + ' mins'">Cook time</li>
+                    </b>
+                    <b style="color:rgb(175, 202, 52)">
+                        <li th:text="'Preparation source: ' + ${recipe.servings}">Source</li>
+                    </b>
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body text-center">
+                <ul style="list-style-type:none;">
+                    <li>Prep time</li>
+                    <li>Cook time</li>
+                    <li>Source</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
