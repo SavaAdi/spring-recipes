@@ -1,5 +1,7 @@
 package com.adisava.springrecipes.services;
 
+import com.adisava.springrecipes.converters.RecipeCommandToRecipe;
+import com.adisava.springrecipes.converters.RecipeToRecipeCommand;
 import com.adisava.springrecipes.domain.Recipe;
 import com.adisava.springrecipes.repositories.RecipeRepository;
 import org.junit.Before;
@@ -21,10 +23,16 @@ public class RecipeServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
+
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
+
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @Test

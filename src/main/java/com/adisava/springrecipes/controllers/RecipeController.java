@@ -1,6 +1,6 @@
 package com.adisava.springrecipes.controllers;
 
-import com.adisava.springrecipes.domain.Recipe;
+
 import com.adisava.springrecipes.services.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
