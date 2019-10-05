@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--xml name space thymeleaf tag-->
+<html lang="en" xmlns:th="http:/www.thymeleaf.org">
+
+<head>
+    <title>Adding recipes</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/2299ce3fb9.js" crossorigin="anonymous"></script>
+
+    <style>
+    .diff {
+         background-color: rgb(175, 202, 52);
+         color: rgba(8, 8, 8, 0.87);
+         padding: 5px;
+
+    }
+    .a {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 5px;
+        margin-left: 10px;
+    }
+    .container{
+        font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+    .form-inline {
+       align:center;
+    }
+
+
+
+
+
+
+
+    </style>
+</head>
+<body style="background: linear-gradient(to bottom, #ccffff 0%, #ffff99 100%);">
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-info">
+            <h3>Add your recipe</h3>
+        </div>
+    </div>
+    <div class="diff">
+        <h3 class="card-text">
+            <i class="fas fa-info"></i> Basic information about the recipe:</h3>
+    </div>
+    <form th:object="${recipe}" th:action="@{/recipe/}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div class="row">
+            <div class="col-sm">
+                <div class="form-group">
+                    <label>Description:</label>
+                    <input type="text" class="form-control" th:field="*{description}"
+                           placeholder="The name of your recipe or recipe interpretation"/>
+                </div>
+            </div>
+        </div>
+        <div class="form-inline">
+            <div class="row">
+                <div class="col-4">
+                    <label>Preparation time</label>
+                    <input type="text" class="form-control" th:field="*{prepTime}" placeholder="Prep time in minutes"/>
+                </div>
+                <div class="col-4">
+                    <label>Cook time</label>
+                    <input type="text" class="form-control" th:field="*{cookTime}" placeholder="Cook time in minutes"/>
+                </div>
+                <div class="col-4">
+                    <label>Servings</label>
+                    <input type="text" class="form-control" th:field="*{servings}" placeholder="Number of servings"/>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-6">
+                    <label>Source</label>
+                    <input type="text" class="form-control" th:field="*{source}"
+                           placeholder="From who or where did you learn about your recipe"/>
+                </div>
+                <div class="col-6">
+                    <label>Url</label>
+                    <input type="text" class="form-control" th:field="*{cookTime}"
+                           placeholder="If your source is a web page, please provide an url"/>
+                </div>
+            </div>
+        </div>
+        <div class="diff">
+            <h4><i class="fas fa-book"></i> Cooking directions</h4>
+        </div>
+        <textarea class="form-control" rows="3" th:field="*{directions}" placeholder="Please provide some guidance in preparing your dish.
+Write here!"></textarea>
+        <div class="diff">
+            <h4><i class="far fa-sticky-note"></i> Recipe Notes</h4>
+        </div>
+        <textarea class="form-control" rows="3" th:field="*{notes.recipeNotes}" placeholder="Write here your recipe notes!"></textarea>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+
+</div>
+
+
+</div>
+
+</body>
+</html>

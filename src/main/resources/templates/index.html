@@ -13,10 +13,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
-<body style="background: linear-gradient(to bottom, #ccffff 0%, #ffff99 100%);">
-<div class="jumbotron">
-    <h1><i style="color:green">Welcome</i></h1>
-</div>
+<body style="background: #ccffff;">
+
 <div class="container">
         <table class="table table-hover">
             <thead>
@@ -24,13 +22,15 @@
                 <th>ID</th>
                 <th>Description</th>
                 <th>View Recipe</th>
+                <th>Edit Recipe</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="recipe : ${recipes}">
                 <td th:text="${recipe.id}">id</td>
                 <td th:text="${recipe.description}">Hot cereals fruitcake</td>
-                <td><a th:href="@{'/recipe/show/' + ${recipe.id}}">View</a></td>
+                <td><a th:href="@{'/recipe/' + ${recipe.id} + '/show'}">View</a></td>
+                <td><a th:href="@{'/recipe/' + ${recipe.id} + '/update'}">Update</a></td>
             </tr>
             </tbody>
         </table>

@@ -1,7 +1,6 @@
 package com.adisava.springrecipes.domain;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -54,5 +53,4 @@ public class Recipe {
         this.ingredients.add(ingredient);
         return this;
     }
-
 }

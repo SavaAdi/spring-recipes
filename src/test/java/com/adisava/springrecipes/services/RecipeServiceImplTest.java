@@ -1,5 +1,6 @@
 package com.adisava.springrecipes.services;
 
+import com.adisava.springrecipes.commands.RecipeCommand;
 import com.adisava.springrecipes.converters.RecipeCommandToRecipe;
 import com.adisava.springrecipes.converters.RecipeToRecipeCommand;
 import com.adisava.springrecipes.domain.Recipe;
@@ -50,6 +51,26 @@ public class RecipeServiceImplTest {
         verify(recipeRepository, times(1)).findById(id);
         verify(recipeRepository, never()).findAll();
 
+    }
+
+    @Test
+    public void getCommandByIdTest() throws Exception{
+        Long id = 1L;
+        Recipe recipe = new Recipe();
+        recipe.setId(id);
+        Optional<Recipe> optionalRecipe = Optional.of(recipe);
+
+        when(recipeRepository.findById(anyLong())).thenReturn(optionalRecipe);
+
+        RecipeCommand recipeCommand = new RecipeCommand();
+        recipeCommand.setId(id);
+
+        when(recipeToRecipeCommand.convert(recipe)).thenReturn(recipeCommand);
+
+        RecipeCommand commandById = recipeService.findByCommandId(id);
+        assertNotNull("Returned null recipe", commandById);
+        verify(recipeRepository, times(1)).findById(anyLong());
+        verify(recipeRepository, never()).findAll();
     }
 
     @Test
