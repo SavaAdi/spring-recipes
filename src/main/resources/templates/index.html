@@ -30,7 +30,9 @@
                 <td th:text="${recipe.id}">id</td>
                 <td th:text="${recipe.description}">Hot cereals fruitcake</td>
                 <td><a th:href="@{'/recipe/' + ${recipe.id} + '/show'}">View</a></td>
-                <td><a th:href="@{'/recipe/' + ${recipe.id} + '/update'}">Update</a></td>
+                <td><a class="btn btn-outline-primary" th:href="@{'/recipe/' + ${recipe.id} + '/update'}">Update</a>
+                    <a class="btn btn-outline-danger" th:href="@{'/recipe/' + ${recipe.id} + '/delete'}">Delete</a>
+                </td>
             </tr>
             </tbody>
         </table>
