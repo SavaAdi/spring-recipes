@@ -1,6 +1,8 @@
 package com.adisava.springrecipes.controllers;
 
 import com.adisava.springrecipes.commands.IngredientCommand;
+import com.adisava.springrecipes.commands.RecipeCommand;
+import com.adisava.springrecipes.commands.UnitOfMeasureCommand;
 import com.adisava.springrecipes.services.IngredientService;
 import com.adisava.springrecipes.services.RecipeService;
 import com.adisava.springrecipes.services.UnitOfMeasureService;
@@ -44,6 +46,21 @@ public class IngredientController {
     @RequestMapping("recipe/{recipeId}/ingredient/{id}/update")
     public String updateRecipeIngredient(@PathVariable String recipeId, @PathVariable String id, Model model){
         model.addAttribute("ingredient", ingredientService.findByRecipeIdAndIngredientId(Long.valueOf(recipeId), Long.valueOf(id)));
+        model.addAttribute("uomList", unitOfMeasureService.listAllUoms());
+
+        return "recipe/ingredient/ingredientform";
+    }
+
+    @GetMapping
+    @RequestMapping("/recipe/{recipeId}/ingredient/new")
+    public String newIngredient(@PathVariable String recipeId, Model model){
+        RecipeCommand recipeCommand = recipeService.findByCommandId(Long.valueOf(recipeId));
+        // TODO: 09.10.2019   throw excp if null
+        IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setRecipeId(Long.valueOf(recipeId));
+        model.addAttribute("ingredient", ingredientCommand);
+
+        ingredientCommand.setUom(new UnitOfMeasureCommand());
         model.addAttribute("uomList", unitOfMeasureService.listAllUoms());
 
         return "recipe/ingredient/ingredientform";
