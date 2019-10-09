@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--xml name space thymeleaf tag-->
+<html lang="en" xmlns:th="http:/www.thymeleaf.org">
+
+<head>
+    <title>Ingredients list</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"   >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/2299ce3fb9.js" crossorigin="anonymous"></script>
+
+    <style>
+    .diff {
+         background-color: rgb(175, 202, 52);
+         color: rgba(8, 8, 8, 0.87);
+         padding: 5px;
+
+    }
+    .a {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 5px;
+        margin-left: 10px;
+    }
+    .container{
+        font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+
+
+
+    </style>
+</head>
+<body style="background: #ccffff;">
+
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-info">
+            <h3 th:text="${'Edit ' + ingredient.description}">Edit ingredient</h3>
+        </div>
+    </div>
+    <div>
+        <form th:object="${ingredient}" th:action="@{'/recipe/' + ${ingredient.getRecipeId()} + '/ingredient'}">
+            <input type="hidden" th:field="*{id}">
+            <div class="form-group">
+                <label>Description:</label>
+                <input type="text" class="form-control" th:field="*{description}"
+                       placeholder="Ingredient description"/>
+            </div>
+            <div class="form-group">
+                <label>Amount:</label>
+                <input type="number" class="form-control" th:field="*{amount}"
+                       placeholder="The name of your recipe or recipe interpretation"/>
+            </div>
+            <div class="form-group">
+                <label>Select unit:</label>
+                <select class="form-control" name="uom.id">
+                    <option th:each="uomEach : ${uomList}"
+                            th:value="${uomEach.id}"
+                            th:selected="${uomEach.equals(ingredient.uom)}"
+                            th:text="${uomEach.description}">unit</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
