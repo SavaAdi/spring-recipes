@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--xml name space thymeleaf tag-->
+<html lang="en" xmlns:th="http:/www.thymeleaf.org">
+
+<head>
+    <title>Adding recipes</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/2299ce3fb9.js" crossorigin="anonymous"></script>
+
+    <style>
+    .diff {
+         background-color: rgb(175, 202, 52);
+         color: rgba(8, 8, 8, 0.87);
+         padding: 5px;
+
+    }
+    .a {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 5px;
+        margin-left: 10px;
+    }
+    .container{
+        font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+    .form-inline {
+       align:center;
+    }
+    </style>
+
+</head>
+<body style="background: #ccffff;">
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-info">
+            <h3>Select an image to upload for your recipe</h3>
+        </div>
+    </div>
+    <div>
+    <form  action="http:\\localhost" method="post" enctype="multipart/form-data"
+           th:action="@{'/recipe/' + ${recipe.getId()} + '/image'}">
+        <label class="control-label">Select File</label>
+        <input id="imagefile" name="imagefile" type="file" class="file">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</body>
+</html>

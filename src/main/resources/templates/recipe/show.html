@@ -43,7 +43,12 @@
     <div class="card">
         <div class="card-header bg-info">
             <h3 th:text="${recipe.description}">Recipe description</h3>
+            <a class="btn btn-primary" href="#"
+               th:href="@{'/recipe/' + ${recipe.id} + '/image'}" role="button">Change Image</a>
         </div>
+        <img alt="Some image"
+             th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}"
+             height="600">
     </div>
 
     <div class="diff">
@@ -55,7 +60,6 @@
             </li>
         </ul>
     </div>
-
     <div class="card-group">
         <div class="card">
             <div class="card-body text-center">
