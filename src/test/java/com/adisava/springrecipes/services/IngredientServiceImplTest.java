@@ -99,4 +99,23 @@ public class IngredientServiceImplTest {
         verify(recipeRepository, times(1)).save(any(Recipe.class));
     }
 
+    @Test
+    public void deleteById() throws Exception{
+//       given
+       Recipe recipe = new Recipe();
+       Ingredient ingredient = new Ingredient();
+       ingredient.setId(1L);
+       recipe.addIngredient(ingredient);
+       ingredient.setRecipe(recipe);
+
+       Optional<Recipe> optionalRecipe = Optional.of(recipe);
+
+//       when
+       when(recipeRepository.findById(anyLong())).thenReturn(optionalRecipe);
+       ingredientService.deleteById(1L, 1L);
+
+//       then
+        verify(recipeRepository, times(1)).findById(anyLong());
+        verify(recipeRepository, times(1)).save(any(Recipe.class));
+    }
 }
