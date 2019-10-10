@@ -66,17 +66,26 @@
         </div>
         <div class="form-inline">
             <div class="row">
-                <div class="col-4">
+                <div class="col-3">
                     <label>Preparation time</label>
                     <input type="text" class="form-control" th:field="*{prepTime}" placeholder="Prep time in minutes"/>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <label>Cook time</label>
                     <input type="text" class="form-control" th:field="*{cookTime}" placeholder="Cook time in minutes"/>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <label>Servings</label>
                     <input type="text" class="form-control" th:field="*{servings}" placeholder="Number of servings"/>
+                </div>
+                <div class="col-3">
+                    <label>Difficulty</label>
+                    <select class="form-control" th:field="*{difficulty}">
+                        <option th:each="difficultyValue : ${T(com.adisava.springrecipes.domain.Difficulty).values()}"
+                                th:value="${difficultyValue.name()}"
+                                th:text="${difficultyValue.name()}">
+                            diff value</option>
+                    </select>
                 </div>
             </div>
         </div>
