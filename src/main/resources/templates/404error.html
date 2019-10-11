@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--xml name space thymeleaf tag-->
+<html lang="en" xmlns:th="http:/www.thymeleaf.org">
+
+<head>
+    <title>Recipes Homepage</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background: #F0F0F0;">
+<div class="jumbotron">
+<h1>404 Not found</h1>
+    <p1 th:text="${exception.getMessage()}"></p1>
+</div>
+<img src="https://previews.123rf.com/images/vadymvdrobot/vadymvdrobot1812/vadymvdrobot181201684/113308451-confused-chef-cook-wearing-uniform-standing-over-white-background-holding-laptop-computer.jpg"
+     height="400" width="600">
+</body>
+</html>
