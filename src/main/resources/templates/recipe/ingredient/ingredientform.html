@@ -44,7 +44,7 @@
         </div>
     </div>
     <div>
-        <form th:object="${ingredient}" th:action="@{'/recipe/' + ${ingredient.getRecipeId()} + '/ingredient'}">
+        <form th:object="${ingredient}" th:action="@{'/recipe/' + ${ingredient.getRecipeId()} + '/ingredient'}" method="post">
             <input type="hidden" th:field="*{id}">
             <div class="form-group">
                 <label>Description:</label>

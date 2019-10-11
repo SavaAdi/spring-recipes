@@ -2,6 +2,7 @@ package com.adisava.springrecipes.controllers;
 
 import com.adisava.springrecipes.commands.RecipeCommand;
 import com.adisava.springrecipes.domain.Recipe;
+import com.adisava.springrecipes.exceptions.NotFoundException;
 import com.adisava.springrecipes.services.RecipeService;
 import org.junit.Before;
 import org.junit.Test;
@@ -48,6 +49,16 @@ public class RecipeControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("recipe/show"))
                 .andExpect(model().attributeExists("recipe"));
+    }
+
+    @Test
+    public void getRecipeNotFound() throws Exception{
+
+//        when
+        when(recipeService.findById(anyLong())).thenThrow(NotFoundException.class);
+
+//        then
+        mockMvc.perform(get("/recipe/1/show")).andExpect(status().isNotFound());
     }
 
     @Test
